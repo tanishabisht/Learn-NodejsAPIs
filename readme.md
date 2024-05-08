@@ -1,90 +1,38 @@
-# CRUD operations in the backend
+# Learn - Node.js by creating APIs for CRUD Operations
 
-The code is taken from [this](https://github.com/iamshaunjp/node-js-playlist) repository by [iamshaunjp](https://github.com/iamshaunjp). Practiced from his [youtube_series](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) on nodejs tutorial for beginners.
-
-
+This repository contains code examples for backend CRUD (Create, Read, Update, Delete) operations, based on the [Node.js tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) by Shaun Pelling (iamshaunjp).
 
 
-## Dependancies used
-
-- [**express**](https://www.npmjs.com/package/express)
-This middleware provides us with fewer lines of code that is easier to understand compared to pure nodejs code for routing, caching, redirecting and provides us with MVC method to arrange our code systematically
-
-- [**mongoose**](https://www.npmjs.com/package/mongoose)
-This helps connect mongoDB with our nodejs application
-
-- [**body-parser**](https://www.npmjs.com/package/body-parser)
-This is a nodejs middleware for handling JSON, Raw, Text and URL encoded form data. Parse incoming request bodies in a middleware before your handlers, available under the req.body property
-
-- [**nodemon**](https://www.npmjs.com/package/nodemon)
-It is a tool that helps develop node.js based applications automatically restart when file changes in the directory are detected
-
+## Instructions to run the application
+Follow these instructions to get the application running:
+1. Click the green **Code** button on the GitHub repository page and download the ZIP file.
+2. Extract the contents of the ZIP file.
+3. Open the extracted folder in your preferred IDE (such as VS Code).
+4. Install Node.js version 14.21.3:
+   - `nvm install v14.21.3`
+   - `nvm use v14.21.3`
+5. Install necessary packages:
+   - `npm install`
+6. Start the application:
+   - To run the project : `npm start`
 
 
-
-## Flow of the code
-
-- [**app.js**](./app.js)
-  - require all the packages to be used
-  - set express app
-  - connect to mongDB using mongoose
-  - call all the middlewares you will be using in your application i.e. body-parser(installed package), route-middleware(wrote code in [**ninja.routes.js**](./ninja.routes.js))
-  - listen to the port
-
-- [**ninja.model.js**](./ninja.model.js) : 
-here the data structure (aka. Schema) to be stored in our mongoDB is defined using mongoose. Model is created and exported using the Schema defined.
-
-- [**ninja.routes.js**](./ninja.routes.js) :
-Using express and the model we created in [**ninja.model.js**](./ninja.model.js) we create routes.
+## Code Workflow
+- [**app.js**](./app.js): Initializes the application, sets up the Express app, connects to MongoDB using Mongoose, calls required middleware including `body-parser` and custom route middleware defined in [**ninja.routes.js**](./ninja.routes.js), and listens on the specified port.
+- [**ninja.model.js**](./ninja.model.js): Defines the data structure (Schema) to be stored in MongoDB using Mongoose. This model is then created and exported.
+- [**ninja.routes.js**](./ninja.routes.js): Uses Express and the model created in `ninja.model.js` to set up the application routes.
 
 
+## Basic CRUD Operations
+Test these CRUD operations using a tool like Postman. The operations include:
+- **Create**: `POST` to `http://localhost:4000/api/ninjas` to add a new ninja to the database.
+- **Read**: `GET` from `http://localhost:4000/api/ninjas` to retrieve all ninjas, or `GET` from `http://localhost:4000/api/ninjas?lng=13.7&lat=45.3` to find ninjas near specific longitude and latitude.
+- **Update**: `PUT` to `http://localhost:4000/api/ninjas/:id` to update details of a specific ninja by ID.
+- **Delete**: `DELETE` from `http://localhost:4000/api/ninjas/:id` to remove a ninja by ID from the database.
 
 
-## Basic CRUD operations
-One can test these CRUD operations on POSTMAN. 
-
-```
-Create, Read, Update, Delete 
-post, get, put, delete
-```
-
-The following are the routes created by this application.
-
-- [**GET**](./ninja.routes.js#L6) <br/>
-http://localhost:4000/api/ninjas <br/>
-to get all the ninjas from database
-
-- [**GET**](./ninja.routes.js#L15) <br/>
-http://localhost:4000/api/ninjas?lng=13.7&lat=45.3 <br/>
-to get the ninjas near the given lng and lat from the database
-
-- [**POST**](./ninja.routes.js#L33) <br/>
-http://localhost:4000/api/ninjas <br/>
-to get add new ninja from the database
-
-- [**PUT**](./ninja.routes.js#L50) <br/>
-http://localhost:4000/api/ninjas/:id <br/>
-to update details of ninja with the given id(in the parameters) from the database
-
-- [**DELETE**](./ninja.routes.js#L64) <br/>
-http://localhost:4000/api/ninjas <br/>
-to delete a ninja of the given id from the database
-
-
-
-
-## How to start the code on local machine
-
-- Click on the green code button as shown below
-![No image found](./SavingCodeSnippet.JPG)
-
-- Download then extract the zip file
-
-- Open the folder in VS Code or any of you favorite IDE
-
-- Open terminal, (VS code has built in terminal) and write ```npm install``` or ```npm i```, this will install all the node packages mentioned in package.json file
-
-- To start the application write ```npm start``` in your terminal
-
-
-
+## Dependencies used
+- [**Express**](https://www.npmjs.com/package/express): A web application framework for Node.js, that simplifies routing, middleware, and other server-side logic.
+- [**Mongoose**](https://www.npmjs.com/package/mongoose): An ODM (Object Data Modeling) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+- [**Body-parser**](https://www.npmjs.com/package/body-parser): A Node.js middleware that parses incoming request bodies before your handlers, available under the `req.body` property, and is based on body parsing middleware.
+- [**Nodemon**](https://www.npmjs.com/package/nodemon): A utility that monitors for any changes in your source and automatically restarts your server. Ideal for development.
